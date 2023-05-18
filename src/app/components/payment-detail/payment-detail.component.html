@@ -1,0 +1,22 @@
+<h1>{{paylink?.attributes.descripcion}}</h1>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th scope="col">item</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Monto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of paylink.attributes.items">
+
+            <td>{{item.descripcion}}</td>
+            <td>{{item.cantidad}} </td>
+            <td>{{item.monto}}</td>
+        </tr>
+
+
+    </tbody>
+</table>
+<h2 class="text-end">Total a pagar: <strong>${{paylink?.attributes.total}}</strong></h2>

@@ -1,0 +1,17 @@
+<app-header></app-header>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="card">
+                <div class="card-body">
+                    <app-payment-detail [paylink]="paymentLink"></app-payment-detail>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+            <app-payment-form [dataLink]="paymentLink"></app-payment-form>
+        </div>
+    </div>
+</div>
