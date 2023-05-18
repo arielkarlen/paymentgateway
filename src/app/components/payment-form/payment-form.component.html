@@ -1,0 +1,185 @@
+<form [formGroup]="forms" (ngSubmit)="onSubmit()">
+    <div class=" accordion" id="accordionExample">
+
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" aria-expanded="true" aria-controls="collapseOne">
+                    <span class="badge text-bg-primary">1</span> Datos de facturacion
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="row contentForm">
+                        <div class="input-group mb-3 input-group-sm">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-user" [class.text-success]="this.forms.get('name')?.valid"
+                                    [class.text-danger]="this.forms.get('name')?.invalid && this.forms.get('name')?.touched"></i>
+
+                            </span>
+                            <input type="text" class="form-control" placeholder="Nombre y apellido"
+                                formControlName="name" (change)="validateFirstStep()" (blur)="validateFirstStep()">
+                        </div>
+                        <div class="input-group mb-3 input-group-sm">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-address-card" [class.text-success]="this.forms.get('dni')?.valid"
+                                    [class.text-danger]="this.forms.get('dni')?.invalid && this.forms.get('dni')?.touched"></i>
+
+                            </span>
+                            <input type="type" class="form-control" placeholder="DNI" formControlName="dni"
+                                maxlength="8" (change)="validateFirstStep()" (blur)="validateFirstStep()">
+                        </div>
+                        <div class="input-group mb-3 input-group-sm">
+                            <span class="input-group-text">
+                                <i class="fa-solid fa-envelope" [class.text-success]="this.forms.get('email')?.valid"
+                                    [class.text-danger]="this.forms.get('email')?.invalid && this.forms.get('email')?.touched"></i>
+
+                            </span>
+                            <input type="text" class="form-control" placeholder="e-mail" formControlName="email"
+                                (change)="validateFirstStep()" (blur)="validateFirstStep()">
+                        </div>
+
+                    </div>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                        [disabled]="firstStepOk">
+                        Siguiente
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" aria-expanded="false"
+                    aria-controls="collapseTwo">
+                    <span class="badge text-bg-primary">2</span> Datos de la tarjeta
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="input-group mb-3 input-group-sm">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-credit-card"
+                                [class.text-success]="this.forms.get('cardNumber')?.valid"
+                                [class.text-danger]="this.forms.get('cardNumber')?.invalid && this.forms.get('cardNumber')?.touched"></i>
+
+                        </span>
+                        <input type="text" class="form-control" placeholder="Número de tarjeta"
+                            formControlName="cardNumber" maxlength="16" (change)="validateSecondStep()"
+                            (blur)="validateSecondStep()">
+                    </div>
+
+                    <div class="input-group mb-3 input-group-sm">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-user" [class.text-success]="this.forms.get('cardName')?.valid"
+                                [class.text-danger]="this.forms.get('cardName')?.invalid && this.forms.get('cardName')?.touched"></i>
+
+                        </span>
+                        <input type="text" class="form-control" placeholder="Nombre y apellido del titular"
+                            formControlName="cardName" (change)="validateSecondStep()" (blur)="validateSecondStep()">
+                    </div>
+                    <div class="input-group mb-3 input-group-sm">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-address-card" [class.text-success]="this.forms.get('cardDni')?.valid"
+                                [class.text-danger]="this.forms.get('cardDni')?.invalid && this.forms.get('cardDni')?.touched"></i>
+
+                        </span>
+                        <input type="text" class="form-control" placeholder="DNI del titular" formControlName="cardDni"
+                            maxlength="8" (change)="validateSecondStep()" (blur)="validateSecondStep()">
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3 input-group-sm">
+                                <span class="input-group-text">
+
+                                    <i class="fa-solid fa-calendar-days"
+                                        [class.text-success]="this.forms.get('cardDate')?.valid"
+                                        [class.text-danger]="this.forms.get('cardDate')?.invalid && this.forms.get('cardDate')?.touched"></i>
+
+                                </span>
+                                <input type="text" class="form-control" placeholder="Fecha de Vencimiento"
+                                    formControlName="cardDate" maxlength="5" (change)="validateSecondStep()"
+                                    (blur)="validateSecondStep()">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="input-group mb-3 input-group-sm">
+                                <span class="input-group-text">
+
+                                    <i class="fa-solid fa-lock" [class.text-success]="this.forms.get('cardCvv')?.valid"
+                                        [class.text-danger]="this.forms.get('cardCvv')?.invalid && this.forms.get('cardCvv')?.touched"></i>
+
+                                </span>
+                                <input type="password" class="form-control" placeholder="Valido hasta"
+                                    formControlName="cardCvv" maxlength="3" (change)="validateSecondStep()"
+                                    (blur)="validateSecondStep()">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false"
+                            aria-controls="collapseOne">Volver</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo"
+                            [disabled]="SecondStepOk">Siguiente</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" aria-expanded="false"
+                    aria-controls="collapseThree">
+                    <span class="badge text-bg-primary">3</span> Confirmacion
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h3>Datos de facturacion</h3>
+                    <div class="row">
+                        <div class="col">
+                            <p><strong>Nombre:</strong> {{this.forms.get('name')?.value}}</p>
+                            <p><strong>Dni:</strong> {{this.forms.get('dni')?.value}}</p>
+                            <p><strong>Email:</strong> {{this.forms.get('email')?.value}}</p>
+                        </div>
+                        <div class="col">
+                            <h3>Datos de pago</h3>
+                            <p>Tarjeta #: {{this.forms.get('cardNumber')?.value}}</p>
+                            <p>Titular: {{this.forms.get('cardName')?.value}}</p>
+                        </div>
+                    </div>
+
+
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"
+                            aria-controls="collapseOne">Volver</button>
+                        <button type="submit" class="btn btn-primary">Confirmar</button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<!-- Modal -->
+<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    style="display:block" *ngIf="showModal">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Pago exitoso</h1>
+
+            </div>
+            <div class="modal-body">
+                Su pago fue acreditado con éxito
+            </div>
+
+        </div>
+    </div>
+</div>
