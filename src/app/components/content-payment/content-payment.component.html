@@ -10,8 +10,15 @@
             </div>
 
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-6" *ngIf="paymentLink.attributes.pay == false">
             <app-payment-form [dataLink]="paymentLink"></app-payment-form>
+        </div>
+        <div class="col-lg-6" *ngIf="paymentLink.attributes.pay == true">
+            <div class="card">
+                <div class="card-body">
+                    <app-payment-succesfull></app-payment-succesfull>
+                </div>
+            </div>
         </div>
     </div>
 </div>

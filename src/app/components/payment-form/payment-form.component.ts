@@ -74,7 +74,7 @@ export class PaymentFormComponent implements OnInit {
     this._payservices.editLinks(this.idPayment, payment).subscribe({
       next: () => {},
       error: (e) => {},
-      complete: () => {this.showModal=true},
+      complete: () => {this.showModal=true; setInterval(()=>window.location.reload(), 3000)},
     })
   }
   

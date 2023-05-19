@@ -11,6 +11,7 @@ import { ContentPaymentComponent } from './components/content-payment/content-pa
 import { PaymentFormComponent } from './components/payment-form/payment-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PaymentSuccesfullComponent } from './components/payment-succesfull/payment-succesfull.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 
 const routes: Route[] = [
@@ -26,7 +27,8 @@ const routes: Route[] = [
     PaymentDetailComponent,
     ContentPaymentComponent,
     PaymentFormComponent,
-    PaymentSuccesfullComponent
+    PaymentSuccesfullComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

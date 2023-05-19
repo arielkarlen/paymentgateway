@@ -1,3 +1,8 @@
+<div *ngIf="showModal">
+    <app-spinner></app-spinner>
+</div>
+
+
 <form [formGroup]="forms" (ngSubmit)="onSubmit()">
     <div class=" accordion" id="accordionExample">
 
@@ -165,21 +170,3 @@
         </div>
     </div>
 </form>
-
-
-<!-- Modal -->
-<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-    style="display:block" *ngIf="showModal">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Pago exitoso</h1>
-
-            </div>
-            <div class="modal-body">
-                Su pago fue acreditado con éxito
-            </div>
-
-        </div>
-    </div>
-</div>

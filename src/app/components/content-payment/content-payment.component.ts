@@ -9,8 +9,9 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ContentPaymentComponent implements OnInit{
   title = 'gatewayPayment';
-  paymentLink: any[]=[]
+  paymentLink: any
   idPayment: any=null
+  showForm: boolean= true
   constructor(public _payservices: GetLinkService, private _route: ActivatedRoute){
    
   }
@@ -19,12 +20,11 @@ export class ContentPaymentComponent implements OnInit{
     
     this.idPayment=this._route.snapshot.paramMap.get('id');
    
-  
-
-    this._payservices.getLinks(this.idPayment).subscribe((data)=> {
+this._payservices.getLinks(this.idPayment).subscribe((data)=> {
       this.paymentLink=data.data;
-     
+    
     })
+
     
   }
 }
